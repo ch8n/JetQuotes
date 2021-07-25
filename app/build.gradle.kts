@@ -42,8 +42,8 @@ android {
         applicationId = "www.spikeysanju.jetquotes"
         minSdk = 21
         targetSdk = 30
-        versionCode = 1
-        versionName = "1.3.1"
+        versionCode = 2
+        versionName = "1.4.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
