@@ -68,9 +68,7 @@ android {
 
     kotlinOptions {
         jvmTarget = "11"
-        useIR = true
     }
-
 
     buildFeatures {
         compose = true
@@ -78,8 +76,6 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = rootProject.extra["compose_version"] as String
-        kotlinCompilerVersion = rootProject.extra["kotlinVersion"] as String
-
     }
 }
 
@@ -94,16 +90,13 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:${rootProject.extra["lifeCycleVersion"]}")
     implementation("androidx.activity:activity-compose:${rootProject.extra["composeActivityVersion"]}")
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:${rootProject.extra["expressoVersion"]}")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:${rootProject.extra["compose_version"]}")
 
     //compose navigation
     implementation("androidx.navigation:navigation-compose:${rootProject.extra["composeNavigationVersion"]}")
     implementation("androidx.hilt:hilt-navigation-compose:${rootProject.extra["hiltComposeNavVersion"]}")
-
-    // Moshi
-    implementation("com.squareup.moshi:moshi-kotlin:${rootProject.extra["moshiVersion"]}")
 
     // Preferences DataStore
     implementation("androidx.datastore:datastore-preferences:${rootProject.extra["dataStoreVersion"]}")
