@@ -54,7 +54,7 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
     private val _uiState = MutableStateFlow<ViewState>(ViewState.Loading)
     private val _favState = MutableStateFlow<FavouriteViewState>(FavouriteViewState.Loading)
 
-    // UI collects from this StateFlow to get it's state update
+    // UI collects from this StateFlow to get it"s state update
     val uiState = _uiState.asStateFlow()
     val favState = _favState.asStateFlow()
 

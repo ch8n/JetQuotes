@@ -1,5 +1,33 @@
 #!/usr/bin/env sh
 
+#
+# /*
+#  *
+#  *  * MIT License
+#  *  *
+#  *  * Copyright (c) 2020 Sanju S
+#  *  *
+#  *  * Permission is hereby granted, free of charge, to any person obtaining a copy
+#  *  * of this software and associated documentation files (the "Software"), to deal
+#  *  * in the Software without restriction, including without limitation the rights
+#  *  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+#  *  * copies of the Software, and to permit persons to whom the Software is
+#  *  * furnished to do so, subject to the following conditions:
+#  *  *
+#  *  * The above copyright notice and this permission notice shall be included in all
+#  *  * copies or substantial portions of the Software.
+#  *  *
+#  *  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#  *  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#  *  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#  *  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#  *  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#  *  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+#  *  * SOFTWARE.
+#  *
+#  */
+#
+
 ##############################################################################
 ##
 ##  Gradle start up script for UN*X
@@ -12,8 +40,8 @@ PRG="$0"
 # Need this for relative symlinks.
 while [ -h "$PRG" ] ; do
     ls=`ls -ld "$PRG"`
-    link=`expr "$ls" : '.*-> \(.*\)$'`
-    if expr "$link" : '/.*' > /dev/null; then
+    link=`expr "$ls" : ".*-> \(.*\)$"`
+    if expr "$link" : "/.*" > /dev/null; then
         PRG="$link"
     else
         PRG=`dirname "$PRG"`"/$link"
@@ -44,7 +72,7 @@ die () {
     exit 1
 }
 
-# OS specific support (must be 'true' or 'false').
+# OS specific support (must be "true" or "false").
 cygwin=false
 msys=false
 darwin=false
@@ -69,7 +97,7 @@ CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
 # Determine the Java command to use to start the JVM.
 if [ -n "$JAVA_HOME" ] ; then
     if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
-        # IBM's JDK on AIX uses strange locations for the executables
+        # IBM"s JDK on AIX uses strange locations for the executables
         JAVACMD="$JAVA_HOME/jre/sh/java"
     else
         JAVACMD="$JAVA_HOME/bin/java"
@@ -82,7 +110,7 @@ location of your Java installation."
     fi
 else
     JAVACMD="java"
-    which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+    which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no "java" command could be found in your PATH.
 
 Please set the JAVA_HOME variable in your environment to match the
 location of your Java installation."
@@ -156,7 +184,7 @@ fi
 
 # Escape application args
 save () {
-    for i do printf %s\\n "$i" | sed "s/'/'\\\\''/g;1s/^/'/;\$s/\$/' \\\\/" ; done
+    for i do printf %s\\n "$i" | sed "s/"/"\\\\""/g;1s/^/"/;\$s/\$/" \\\\/" ; done
     echo " "
 }
 APP_ARGS=$(save "$@")

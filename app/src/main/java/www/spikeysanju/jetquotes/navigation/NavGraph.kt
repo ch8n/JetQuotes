@@ -33,14 +33,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.HiltViewModelFactory
-import androidx.hilt.navigation.compose.hiltNavGraphViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
-import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import www.spikeysanju.jetquotes.view.details.DetailScreen
 import www.spikeysanju.jetquotes.view.favourites.FavouritesScreen
@@ -77,7 +76,7 @@ fun NavGraph(toggleTheme: () -> Unit) {
                     type = NavType.StringType
                 })
         ) {
-            val viewModel = hiltNavGraphViewModel<MainViewModel>(backStackEntry = it)
+            val viewModel = hiltViewModel<MainViewModel>(it)
             DetailScreen(
                 viewModel,
                 actions.upPress,
@@ -88,7 +87,7 @@ fun NavGraph(toggleTheme: () -> Unit) {
 
         // Favourites
         composable(Screen.Favourites.route) {
-            val viewModel = hiltNavGraphViewModel<MainViewModel>(backStackEntry = it)
+            val viewModel = hiltViewModel<MainViewModel>(it)
             FavouritesScreen(viewModel, actions)
         }
     }
