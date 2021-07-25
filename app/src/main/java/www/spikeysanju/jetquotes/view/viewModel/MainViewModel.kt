@@ -31,16 +31,14 @@ package www.spikeysanju.jetquotes.view.viewModel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import www.spikeysanju.jetquotes.model.Quote
 import www.spikeysanju.jetquotes.repository.MainRepository
 import www.spikeysanju.jetquotes.utils.FavouriteViewState
@@ -61,14 +59,23 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
     // get all quotes from assets folder
     fun getAllQuotes(context: Context) = viewModelScope.launch {
         try {
-            val moshi = Moshi.Builder()
-                .add(KotlinJsonAdapterFactory())
-                .build()
-            val listType = Types.newParameterizedType(List::class.java, Quote::class.java)
-            val adapter: JsonAdapter<List<Quote>> = moshi.adapter(listType)
-            val myJson =
-                context.assets.open("quotes.json").bufferedReader().use { it.readText() }
-            _uiState.value = ViewState.Success(adapter.fromJson(myJson)!!)
+
+            // format/beautify Json
+            val format = Json {
+                ignoreUnknownKeys = true
+                prettyPrint = true
+                isLenient = true
+            }
+
+            // read json file from assets
+            val quotesJson = context.assets.open("quotes.json").bufferedReader().use {
+                it.readText()
+            }
+
+            // decode list of string to Quote Item
+            val quotesList = format.decodeFromString<List<Quote>>(quotesJson)
+            _uiState.value = ViewState.Success(quotesList)
+
         } catch (e: Exception) {
             _uiState.value = ViewState.Error(exception = e)
         }

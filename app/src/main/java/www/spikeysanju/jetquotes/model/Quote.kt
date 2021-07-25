@@ -32,18 +32,20 @@ import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Entity(tableName = "favourites")
+@Serializable
 data class Quote(
 
     @NonNull
     @PrimaryKey
     @ColumnInfo(name = "quote")
-    @Json(name = "quoteText")
+    @SerialName("quoteText")
     val quote: String = "",
 
     @ColumnInfo(name = "author")
-    @Json(name = "quoteAuthor")
-    val author: String? = ""
+    @SerialName("quoteAuthor")
+    val author: String = ""
 )
