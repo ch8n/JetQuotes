@@ -31,7 +31,7 @@ Android. *Made with love ❤️ by [Spikeysanju](https://github.com/Spikeysanju)
   - [Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html) - A flow is an asynchronous
     version of a Sequence, a type of collection whose values are lazily produced.
   - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores
-    UI-related data that isn't destroyed on UI changes.
+    UI-related data that isn"t destroyed on UI changes.
   - [Jetpack Compose Navigation](https://developer.android.com/jetpack/compose/navigation) - The
     Navigation component provides support for Jetpack Compose applications.
   - [DataStore](https://developer.android.com/topic/libraries/architecture/datastore) - Jetpack
@@ -52,7 +52,7 @@ View-Model)***](https://developer.android.com/jetpack/docs/guide#recommended-app
 
 ## Contribute 🤝
 
-If you want to contribute to this library, you're always welcome!
+If you want to contribute to this library, you"re always welcome!
 See [Contributing Guidelines](https://github.com/Spikeysanju/JetQuotes/blob/master/CONTRIBUTION.md).
 
 ## Contact 📩

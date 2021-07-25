@@ -28,27 +28,18 @@
 
 package www.spikeysanju.jetquotes.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.airbnb.lottie.compose.LottieAnimation
-import com.airbnb.lottie.compose.LottieAnimationSpec
-import com.airbnb.lottie.compose.LottieAnimationState
-import com.airbnb.lottie.compose.rememberLottieAnimationState
+import com.airbnb.lottie.compose.*
 import www.spikeysanju.jetquotes.R
 import www.spikeysanju.jetquotes.navigation.MainActions
 import www.spikeysanju.jetquotes.ui.typography
@@ -90,14 +81,14 @@ fun EmptyScreen(actions: MainActions) {
 
 @Composable
 fun Loader() {
-    val animationSpec: LottieAnimationSpec.RawRes =
-        remember { LottieAnimationSpec.RawRes(R.raw.empty) }
-    val animationState: LottieAnimationState =
-        rememberLottieAnimationState(autoPlay = true, repeatCount = Integer.MAX_VALUE)
-
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.empty))
+    val progress by animateLottieCompositionAsState(
+        composition,
+        iterations = LottieConstants.IterateForever,
+    )
     LottieAnimation(
-        animationSpec,
         modifier = Modifier.size(300.dp),
-        animationState = animationState
+        composition = composition,
+        progress = progress
     )
 }
