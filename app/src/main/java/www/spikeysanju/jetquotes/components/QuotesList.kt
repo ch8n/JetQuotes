@@ -31,17 +31,48 @@ package www.spikeysanju.jetquotes.components
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import www.spikeysanju.jetquotes.R
 import www.spikeysanju.jetquotes.model.Quote
 import www.spikeysanju.jetquotes.navigation.MainActions
 
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun QuotesList(quotes: List<Quote>, actions: MainActions) {
-    LazyColumn(modifier = Modifier.padding(36.dp, 12.dp, 0.dp, 12.dp)) {
-        items(items = quotes) { item ->
+
+    var search by remember {
+        mutableStateOf("")
+    }
+
+    LazyColumn(
+        modifier = Modifier.padding(
+            start = 36.dp,
+            top = 12.dp,
+            end = 0.dp,
+            bottom = 12.dp
+        )
+    ) {
+
+        item {
+            TextInputField(
+                label = stringResource(R.string.text_search),
+                value = search,
+                onValueChanged = {
+                    search = it
+                })
+        }
+
+        items(items = quotes.filter {
+            it.author.contains(
+                search,
+                ignoreCase = true
+            ) || it.author.contains(search, ignoreCase = true)
+        }) { item ->
             QuotesCard(item, actions)
         }
     }

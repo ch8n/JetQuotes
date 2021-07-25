@@ -31,13 +31,7 @@ package www.spikeysanju.jetquotes.components
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
@@ -102,7 +96,7 @@ fun DetailCard(viewModel: MainViewModel, quote: String, author: String) {
 
             Text(
                 modifier = Modifier.align(Alignment.CenterHorizontally),
-                text = author.ifBlank { stringResource(R.string.text_unknow) },
+                text = author.ifBlank { stringResource(R.string.text_unknown) },
                 style = typography.body1,
                 color = MaterialTheme.colors.onBackground,
                 textAlign = TextAlign.Center

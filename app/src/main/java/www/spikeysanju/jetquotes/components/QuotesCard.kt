@@ -30,13 +30,7 @@ package www.spikeysanju.jetquotes.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
@@ -56,7 +50,7 @@ fun QuotesCard(quote: Quote, actions: MainActions) {
         .wrapContentSize()
         .padding(12.dp)
         .clickable(onClick = {
-            actions.gotoDetails(quote.quote, quote.author!!)
+            actions.gotoDetails(quote.quote, quote.author)
 
         })
         .background(MaterialTheme.colors.primaryVariant)
@@ -82,7 +76,7 @@ fun QuotesCard(quote: Quote, actions: MainActions) {
                 modifier = Modifier
                     .align(Alignment.CenterEnd)
                     .padding(12.dp),
-                text = quote.author.toString().ifBlank { stringResource(R.string.text_unknow) },
+                text = quote.author.ifBlank { stringResource(R.string.text_unknown) },
                 style = typography.caption,
                 color = MaterialTheme.colors.onBackground
             )
