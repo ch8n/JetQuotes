@@ -100,7 +100,7 @@ dependencies {
 
     // Preferences DataStore
     implementation("androidx.datastore:datastore-preferences:${rootProject.extra["dataStoreVersion"]}")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0-rc01")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
 
     // Room
