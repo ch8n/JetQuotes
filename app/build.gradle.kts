@@ -123,7 +123,7 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
 
     // Lottie
-    implementation("com.airbnb.android:lottie-compose:1.0.0-rc02-1")
+    implementation("com.airbnb.android:lottie-compose:4.2.0")
 
     // KotlinX Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${rootProject.extra["kotlinSerializationVersion"]}")
