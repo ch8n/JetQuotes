@@ -31,6 +31,9 @@
 
     <!-- Base application theme. -->
     <style name="Theme.JetQuotes" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Disable forced dark mode -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/defaultDay</item>
         <item name="colorPrimaryVariant">@color/defaultDayDark</item>
